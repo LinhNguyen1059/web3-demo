@@ -1,8 +1,7 @@
 import useAccountStore from "@/stores/account";
 import { DialogHeader, DialogTitle } from "../ui/dialog";
 import ConnectButton from "./connectButton";
-import { E_NETWORK_NAMES } from "@/connectors/constant";
-import { chainIds } from "@/data/chainIds";
+import { E_NETWORK_ID, E_NETWORK_NAMES } from "@/connectors/constant";
 
 import ethereum_Logo from "@/assets/ethereum_logo.png";
 import binance_Logo from "@/assets/bsc_logo.svg";
@@ -24,14 +23,14 @@ export default function ChooseNetwork() {
         <ConnectButton
           label={E_NETWORK_NAMES.ETH}
           image={ethereum_Logo}
-          onClick={() => onSwitchChain(chainIds.sepolia)}
-          checked={selectedChain === chainIds.sepolia}
+          onClick={() => onSwitchChain(E_NETWORK_ID.ETH_TESTNET)}
+          checked={selectedChain === E_NETWORK_ID.ETH_TESTNET}
         />
         <ConnectButton
           label={E_NETWORK_NAMES.BNB}
           image={binance_Logo}
-          onClick={() => onSwitchChain(chainIds.bsctest)}
-          checked={selectedChain === chainIds.bsctest}
+          onClick={() => onSwitchChain(E_NETWORK_ID.BSC_TESTNET)}
+          checked={selectedChain === E_NETWORK_ID.BSC_TESTNET}
         />
       </div>
     </>

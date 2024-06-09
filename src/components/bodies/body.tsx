@@ -1,14 +1,17 @@
+import { useWeb3React } from "@web3-react/core";
 import { Card, CardContent } from "@/components/ui/card";
-import Status from "./status";
+import BalanceVinachain from "./balance";
 
 export default function Body() {
-  return (
+  const { account } = useWeb3React();
+
+  return account ? (
     <div className="container px-4 mx-auto my-10">
       <Card className="w-[350px] mx-auto py-4">
         <CardContent>
-          <Status />
+          <BalanceVinachain />
         </CardContent>
       </Card>
     </div>
-  );
+  ) : null;
 }

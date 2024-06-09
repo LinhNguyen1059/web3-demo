@@ -16,6 +16,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@walletconnect/ethereum-provider": "^2.13.1",
     "@web3-react/core": "^8.2.3",
+    "@web3-react/empty": "^8.2.3",
     "@web3-react/metamask": "^8.2.4",
     "@web3-react/network": "^8.2.3",
     "@web3-react/types": "^8.2.3",
@@ -30,6 +31,7 @@
     "react-jazzicon": "^1.0.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "web3": "^4.9.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

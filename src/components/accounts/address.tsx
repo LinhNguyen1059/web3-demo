@@ -8,27 +8,24 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import Jazzicons from "../commons/jazzicons";
-import { metaMask } from "@/connectors/metamask";
-import { walletConnect } from "@/connectors/walletConnect";
 import { Button } from "../ui/button";
+import { disconnectWallet } from "@/connectors";
+import useAccountStore from "@/stores/account";
+import { E_CONNECTOR_NAMES } from "@/connectors/constant";
 
 export default function Address() {
-  const { account } = useWeb3React();
+  const { account, provider } = useWeb3React();
+
+  const selectedChain = useAccountStore((state) => state.selectedChain);
 
   const disconnect = useCallback(async () => {
-    const connector = metaMask || walletConnect;
-    localStorage.removeItem("connectorId");
-    if (connector.deactivate) {
-      connector.deactivate();
-    } else {
-      connector.resetState();
+    if (provider?.connection?.url) {
+      disconnectWallet(
+        provider?.connection?.url as E_CONNECTOR_NAMES,
+        selectedChain
+      );
     }
-    // @ts-expect-error close can be returned by wallet
-    if (connector?.close) {
-      // @ts-expect-error close can be returned by wallet
-      await connector.close();
-    }
-  }, []);
+  }, [provider, selectedChain]);
 
   return account ? (
     <div className="flex items-center gap-2">

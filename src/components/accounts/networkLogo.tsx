@@ -1,20 +1,20 @@
 import { useMemo } from "react";
-import { chainIds } from "@/data/chainIds";
 import useAccountStore from "@/stores/account";
 
 import ethereum_Logo from "@/assets/ethereum_logo.png";
 import binance_Logo from "@/assets/bsc_logo.svg";
+import { E_NETWORK_ID } from "@/connectors/constant";
 
 export default function NetworkLogo() {
   const selectedChain = useAccountStore((state) => state.selectedChain);
 
   const networkLogo = useMemo(() => {
     switch (selectedChain) {
-      case chainIds.bsc:
-      case chainIds.bsctest:
+      case E_NETWORK_ID.BSC_MAINNET:
+      case E_NETWORK_ID.BSC_TESTNET:
         return binance_Logo;
-      case chainIds.ethereum:
-      case chainIds.sepolia:
+      case E_NETWORK_ID.ETH_MAINNET:
+      case E_NETWORK_ID.ETH_TESTNET:
         return ethereum_Logo;
       default:
         return "";
